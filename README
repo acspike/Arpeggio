@@ -1,0 +1,3 @@
+Arpeggio is a library for creating beautiful PDF scale and arpeggio diagrams. 
+Arpeggio can generate documents using Cairo or Reportlab. 
+fbdot.py is a simple graphical application for generating the arrays used to generate diagrams.
