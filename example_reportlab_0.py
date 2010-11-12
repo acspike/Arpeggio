@@ -22,7 +22,7 @@ dots = [
     ]
 
 x = inch * 0.75
-y = HEIGHT - (inch * 0.75)
+y = HEIGHT - (inch * (fb.u_height + 0.75))
 fb.draw(x, y, dots)
 
 c.showPage()

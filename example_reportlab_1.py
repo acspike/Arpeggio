@@ -13,7 +13,7 @@ def chart_page(ctx, dots, color=(0,0,0,1)):
     fb.base_color = color
 
     x = inch * 0.75
-    y = HEIGHT - (inch * 0.75)
+    y = HEIGHT - (inch * (fb.u_height + 0.75))
     for i in range(len(dots)):
         fb.draw(x, y + (fb.v * i * (2 * inch)), dots[i])
 
