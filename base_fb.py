@@ -18,6 +18,8 @@ class BaseFB(object):
 
         self.base_color = (0,0,0,1)
         self.top_color = (1,1,1,1)
+        
+        self.do_fret_markers = False
 
     def _top(self):
         return self.current_abs_top + (self.u * self.u_to_top)
@@ -90,6 +92,24 @@ class BaseFB(object):
         self._nut_line(self._fret_to_x(0), self.top, self._fret_to_x(0), self.bottom)
         for i in range(1, int(self.num_frets)):
             self._line(self._fret_to_x(i), self.top, self._fret_to_x(i), self.bottom)
+        
+        #fret markers
+        if self.do_fret_markers:
+            for i in [3,5,7,9,15,17]:
+                x = self._fret_to_x(i) - (0.5 * self.fret_separation)
+                y = (self._string_to_y(0) + self._string_to_y(int(self.num_strings) - 1))/2.0
+                self._circle(x, y, self.dot_size, False)
+            for i in [12]:
+                x = self._fret_to_x(i) - (0.5 * self.fret_separation)
+                first = self._string_to_y(0)
+                last = self._string_to_y(int(self.num_strings) - 1)
+                base = min(first, last)
+                spread = max(first, last) - base
+                spacing = spread / 10.0
+                y1 = base + (spacing * 3)
+                y2 = base + (spacing * 7)
+                self._circle(x, y1, self.dot_size, False)
+                self._circle(x, y2, self.dot_size, False)
         
         for d in dots:
             string_num, fret_num, label, with_ring = d
