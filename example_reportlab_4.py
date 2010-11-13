@@ -5,6 +5,7 @@ from reportlab_fb import ReportlabFB, FBFlowable
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter, landscape
 from reportlab.lib.units import inch
+from reportlab.lib.colors import Color
 
 from reportlab.platypus import Spacer, BaseDocTemplate, Frame, PageTemplate
 from reportlab.platypus.flowables import Flowable
@@ -22,6 +23,10 @@ class CText(Flowable):
         #draw border
         #self.canv.rect(0, 0, self.width, self.height)
         #centre the text
+        g = 0
+        color = Color(g,g,g)
+        self.canv.setFillColor(color)
+        self.canv.setStrokeColor(color)
         self.canv.setFont('Helvetica', 72)
         self.canv.drawCentredString(0.5*self.width, 0.45*self.height, self.note)
         self.canv.setFont('Helvetica', 24)
@@ -51,6 +56,8 @@ fbfc.u_height = 1
 fbfc.u_width = (frameWidth/inch) * 0.98
 fbfc.do_fret_markers = True
 fbfc.numbered_frets = []
+g = 0
+fbfc.base_color = (g,g,g,1)
 
 def add_string(l,s):
     return [(x[0],s+' String',x[1],x[2]) for x in l]

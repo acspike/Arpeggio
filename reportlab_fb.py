@@ -19,27 +19,37 @@ def text_extents(text, face, size):
 class ReportlabFB(BaseFB):
     def __init__(self, context, unit=inch):
         BaseFB.__init__(self, context, -1, unit)
+    def _set_color(self, color='base'):
+        if color == 'top':
+            r,g,b,a = self.top_color
+        else:
+            r,g,b,a = self.base_color
+        rlcolor = Color(r,g,b)
+        self.c.setFillColor(rlcolor)
+        self.c.setStrokeColor(rlcolor)
+
     def _nut_line(self, x1, y1, x2, y2):
         self.c.saveState()
+        self._set_color()
         self.c.setLineCap(1)
         self.c.setLineWidth(4)
         self.c.line(x1, y1, x2, y2)
         self.c.restoreState()
     def _line(self, x1, y1, x2, y2):
+        self.c.saveState()
+        self._set_color()
         self.c.line(x1, y1, x2, y2)
+        self.c.restoreState()
     def _circle(self, x, y, size, filled = True):
+        self.c.saveState()
+        self._set_color()
         m = 0.5 * size
         self.c.ellipse(x - m, y + m, x + m, y - m, _bit(not filled), _bit(filled))
+        self.c.restoreState()
     def _text(self, x, y, text, size, color='top', center_x=True, center_y=False):
         FACE = 'Helvetica'
         self.c.saveState()
-        if color == 'top':
-            r,g,b,a = self.top_color
-        else:
-            r,g,b,a = self.base_color
-        text_color = Color(r,g,b)
-        self.c.setFillColor(text_color)
-        self.c.setStrokeColor(text_color)
+        self._set_color(color)
         self.c.setFont(FACE, size)
         
         x1,y1,x2,y2 = text_extents(text, FACE, size)
