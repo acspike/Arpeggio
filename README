@@ -1,3 +1,41 @@
+== Arpeggio ==
 Arpeggio is a library for creating beautiful PDF scale and arpeggio diagrams. 
-Arpeggio can generate documents using Cairo or Reportlab. 
-fbdot.py is a simple graphical application for generating the arrays used to generate diagrams.
+Arpeggio can generate documents using Reportlab (or Cairo, but the main focus 
+has been on Reportlab). 
+
+
+== Library ==
+
+base_fb.py
+    an abstract fretboard diagram. subclass BaseFB() to provide an 
+    implmentation for a new cavas.
+cairo_fb.py
+    CairoFB() draws on a Cairo context
+reportlab_fb.py
+    ReportlabFB() draws on a Reportlab canvas
+    FBFlowable() adapts ReportlabFB() to a Flowable() interface so that 
+    fretboard diagrams can flow together with text in a document.
+
+== Tools ==
+
+fbdot.py 
+    a simple graphical application for generating arrays of dots used to 
+    generate diagrams. 
+    (for example the arrays found in mode_arrays.py and arpeggio_arrays.py)
+
+== Examples ==
+
+example_0_reportlab.py
+    generates a single fretboard on a page to show dots with rings and 
+    various labels.
+example_1_(cairo|reportlab).py
+    generates a few pages of arpeggio diagrams.
+example_2_cairo.py
+    generates two pages of blank diagrams.
+example_3_reportlab.py
+    generates two documents one of modes and another of arpeggios. makes use of 
+    reportlab's ability to flow text and drawings together in a document.
+example_4_reportlab.py
+    generates a set of fretboard memorization cards. print duplex flipping 
+    on the short edge.
+
