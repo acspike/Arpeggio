@@ -20,7 +20,7 @@ def chart_page(ctx, dots, color=(0,0,0,1)):
     ctx.showPage()
 
 
-ctx = canvas.Canvas('example_reportlab_1.pdf',pagesize=letter)
+ctx = canvas.Canvas('example_1_reportlab.pdf',pagesize=letter)
 
 chart_page(ctx, major_dots)
 chart_page(ctx, minor_dots)

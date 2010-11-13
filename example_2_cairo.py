@@ -21,7 +21,7 @@ def chart_page(ctx, dots, color=(0,0,0,1)):
 
     ctx.show_page()
 
-surface = cairo.PDFSurface('example_cairo_2.pdf', WIDTH, HEIGHT)
+surface = cairo.PDFSurface('example_2_cairo.pdf', WIDTH, HEIGHT)
 ctx = cairo.Context(surface)
 chart_page(ctx, [[]] * 7, (0.4,0.4,0.4,1))
 chart_page(ctx, [[]] * 7, (0.4,0.4,0.4,1))

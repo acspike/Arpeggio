@@ -7,7 +7,7 @@ from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 WIDTH, HEIGHT = letter
 
-c = canvas.Canvas('example_reportlab_0.pdf',pagesize=letter)
+c = canvas.Canvas('example_0_reportlab.pdf',pagesize=letter)
 
 fb = ReportlabFB(c, inch)
 

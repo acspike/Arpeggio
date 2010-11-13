@@ -19,7 +19,7 @@ def chart_page(ctx, dots, color=(0,0,0,1)):
 
     ctx.show_page()
 
-surface = cairo.PDFSurface('example_cairo_1.pdf', WIDTH, HEIGHT)
+surface = cairo.PDFSurface('example_1_cairo.pdf', WIDTH, HEIGHT)
 ctx = cairo.Context(surface)
 chart_page(ctx, major_dots)
 chart_page(ctx, minor_dots)
