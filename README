@@ -38,4 +38,5 @@ example_3_reportlab.py
 example_4_reportlab.py
     generates a set of fretboard memorization cards. print duplex flipping 
     on the short edge.
-
+example_5_reportlab.py
+    generates a few pages of diatonic major and minor scale patterns
