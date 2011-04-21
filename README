@@ -40,3 +40,10 @@ example_4_reportlab.py
     on the short edge.
 example_5_reportlab.py
     generates a few pages of diatonic major and minor scale patterns
+
+== Other ==
+
+notenames/
+    a set of scripts to generate note memorization cards on the treble and 
+    bass clefs. Range tuned to match guitar and bass both as written (8va) 
+    and as sounded.
