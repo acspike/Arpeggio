@@ -110,5 +110,5 @@ class App(tk.Frame):
                 f.set('')
 
 if __name__=='__main__':
-    app = App()
+    app = App(frets=19)
     app.mainloop()
