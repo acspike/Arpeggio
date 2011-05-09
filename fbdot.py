@@ -67,6 +67,8 @@ class App(tk.Frame):
         self.ring_character = tk.StringVar()
         self.ring_character.set('.')
         tk.Entry(bframe, textvariable=self.ring_character, width=2).grid(row=0, column=4, sticky=(tk.E+tk.W))
+        tk.Button(bframe, text='Down', command=self.move_down).grid(row=0, column=5, sticky=(tk.E+tk.W))
+        tk.Button(bframe, text='Up', command=self.move_up).grid(row=0, column=6, sticky=(tk.E+tk.W))
         
         self.io = ScrolledText(self)
         self.io.pack(fill=tk.BOTH, expand=True, anchor=tk.N)
@@ -108,7 +110,28 @@ class App(tk.Frame):
         for s in self.dots:
             for f in s:
                 f.set('')
+    def move(self, offset):
+        self.save()
+        self.clear()
+        v = self.io.get(1.0, tk.END)
+        val = unrepr(v)
+        new_val = []
+        for d in val:
+            s,f,t,r = d
+            f += offset
+            if 0 <= f < self.frets:
+                new_val.append((s,f,t,r))
+            else:
+                print f
+        self.io.delete(1.0, tk.END)
+        self.io.insert(tk.END, str(new_val))
+        self.load()
+    def move_up(self):
+        self.move(1)
+    def move_down(self):
+        self.move(-1)
 
+        
 if __name__=='__main__':
     app = App(frets=19)
     app.mainloop()
