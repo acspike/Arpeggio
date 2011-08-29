@@ -43,7 +43,7 @@ from segovia_scales import scales
 sharp = u"\u266F" 
 flat = u"\u266D"
 
-doc = SimpleDocTemplate("segovia_scales.pdf", bottomMargin = 0.25*inch, topMargin = 0.75*inch)
+doc = SimpleDocTemplate("segovia_scales.pdf",  pagesize=letter, bottomMargin = 0.25*inch, topMargin = 0.75*inch)
 story = []
 count = 0
 for title,patterns in scales:
