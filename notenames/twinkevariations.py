@@ -18,32 +18,36 @@ import itertools
 '''
 
 rhythms = [
-    ('A','Taka Taka Stop Stop', 'z16 z z z z8-. z-.'),
-    ('B','Ice Cream Shh Cone','z8-. z-. r z-.'),
-    ('C','Stop Pony Stop Pony','z8-. z16 z z8-. z16 z '),
-    ('D','Pineapple Pineapple','\\times 2/3 {z8 z z} \\times 2/3 {z8 z z}'),
-    ('E','Peanut Butter Peanut Butter','z16 z z z z z z z')]
+    ('A','Taka Taka Stop Stop', 'z16 z z z z8-. z-.', 7),
+    ('B','Ice Cream Shh Cone','z8-. z-. r z-.', 5),
+    ('C','Stop Pony Stop Pony','z8-. z16 z z8-. z16 z ', 7),
+    ('D','Pineapple Pineapple','\\times 2/3 {z8 z z} \\times 2/3 {z8 z z}', 7),
+    ('E','Peanut Butter Peanut Butter','z16 z z z z z z z', 9)]
 
 lilypond_template = """
 \\version "2.12.3"
 
 \\include "english.ly"
 
-#(set-global-staff-size 30)
+#(set-global-staff-size 100)
 
 \paper {
   tagline = ##f
-  #(set-paper-size "letter-by-8")
+  #(set-paper-size "letter" 'landscape)
   system-count = 1
   print-page-number = ##f
-  line-width = 2 \\in
+  line-width = %s \\in
   indent = #0
 }
 
 \\score {
   \\new Staff {
     \\clef treble
-    <<
+    <<    
+    \\new Voice {
+        \\hideNotes
+        g''''8
+    }
     \\new Voice {
         %s
     }
@@ -63,6 +67,6 @@ lilypond_template = """
 """
        
 if __name__ == "__main__":
-    for v,n,r in rhythms:
-        cmd = """lilypond -o"%s" --pdf - << EOF\n%s\nEOF""" % (n,(lilypond_template % (r.replace('z','e\''),)))
+    for v,n,r,w in rhythms:
+        cmd = """lilypond -o"Twinkle %s %s" --pdf - << EOF\n%s\nEOF""" % (v, n,(lilypond_template % (w,r.replace('z','e\''))))
         print cmd
