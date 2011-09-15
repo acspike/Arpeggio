@@ -19,10 +19,10 @@ import itertools
 
 rhythms = [
     ('A','Taka Taka Stop Stop', 'z16 z z z z8-. z-.', 7),
-    ('B','Ice Cream Shh Cone','z8-. z-. r z-.', 5),
+    ('B','Ice Cream Shh Cone','z8-. z-. r z-.', 4.5),
     ('C','Stop Pony Stop Pony','z8-. z16 z z8-. z16 z ', 7),
-    ('D','Pineapple Pineapple','\\times 2/3 {z8 z z} \\times 2/3 {z8 z z}', 7),
-    ('E','Peanut Butter Peanut Butter','z16 z z z z z z z', 9)]
+    ('D','Pineapple Pineapple','\\times 2/3 {z8 z z} \\times 2/3 {z8 z z}', 6.5),
+    ('E','Peanut Butter Peanut Butter','z16 z z z z z z z', 8.5)]
 
 lilypond_template = """
 \\version "2.12.3"
