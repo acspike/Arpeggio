@@ -72,19 +72,22 @@ from mode_arrays import allmodes
 diatonic = ('Ionian','Dorian','Phrygian','Lydian','Mixolydian','Aeolian','Locrian')
 tonic = ('Lydian','Ionian','Mixolydian','Dorian','Aeolian','Phrygian','Locrian')
 
-types = (diatonic,tonic,diatonic,tonic,diatonic,tonic,tonic,tonic,tonic)
+types = (diatonic,tonic,diatonic,tonic,diatonic,tonic,tonic,tonic,tonic,diatonic,tonic)
 
 gmajor = ('G','A','B','C','D','E','F#')
+fmajor = ('F','G','A','Bb','C','D','E')
 A = ['A']*7
 B = ['B']*7
 G = ['G']*7
-notes = (gmajor,A,gmajor,A,gmajor,A,A,B,G)
+notes = (gmajor,A,gmajor,A,gmajor,A,A,B,G,fmajor,G)
 titles = ('1 Octave Diatonic Modes (Low)','1 Octave Modes (Low)',
 '1 Octave Diatonic Modes (High)','1 Octave Modes (High)',
 '2 Octave Diatonic Modes','2 Octave Modes',
 '1 Octave Modes Up',
 '1 Octave Modes Down',
-'3 Octave Modes'
+'3 Note Per String Modes',
+'3 Note Per String Diatonic Modes',
+'3 Octave Modes',
 )
 
 doc = SimpleDocTemplate("modes.pdf", bottomMargin = 0.25*inch, topMargin = 0.75*inch)
