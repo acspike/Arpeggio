@@ -17,7 +17,7 @@ from reportlab.lib.enums import TA_LEFT
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 
-pdfmetrics.registerFont(TTFont('DejaVuSans', '/usr/share/fonts/truetype/ttf-dejavu/DejaVuSans.ttf'))
+pdfmetrics.registerFont(TTFont('DejaVuSans', '/usr/share/fonts/truetype/DejaVuSans.ttf'))
 
 styles = getSampleStyleSheet()
 #print styles.list()
@@ -38,20 +38,19 @@ fb7.num_frets = 20.0
 
 
 #mode Patterns
-from pentatonic import major, minor
+from pentatonic import major, minor, three_per_string
 
 
 doc = SimpleDocTemplate("pentatonic.pdf",  pagesize=letter, bottomMargin = 0.25*inch, topMargin = 0.75*inch)
 story = []
 count = 0
-for title, scales in [('Minor Pentatonic', minor),('Major Pentatonic', major)]:
+for title, scales in [('Minor Pentatonic', minor),('Major Pentatonic', major),('3 Note per String Pentatonic', three_per_string)]:
     story.append(Paragraph(title,styleT))
     for notes in scales:
         story.append(Spacer(.25*inch, .25*inch)) 
         story.append(FBFlowable(fb7,notes))
         
-    if not count:
-       story.append(PageBreak())
-       count +=1
+    story.append(PageBreak())
+    count +=1
         
 doc.build(story)
